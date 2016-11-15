@@ -1,0 +1,25 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="page-header">
+  <h1>Upload Fasta Files</h1>
+</div>
+<p class="lead">
+<!-- Upload form code-->
+<form action="/uploader" method="POST" enctype="multipart/form-data">
+ 
+  <div class="form-group">
+    <label for="file">Upload File:</label>
+    <input type="file" class="form-control" id="file" name="file" required>
+  </div>
+  
+  <button type="submit" class="btn btn-default">Upload</button>
+</form></p>
+<p>Uploaded Files : <br>
+{% for fi1 in fi %}
+    <div><p><a href ="{{ url_for('download', filename=fi1) }}" target="_blank">{{ fi1 }}</a></p></div>
+    {% endfor %}
+
+</p>
+{% endblock %}
